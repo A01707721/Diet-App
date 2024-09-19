@@ -1,3 +1,10 @@
+/* 
+* Proyecto App Calorias
+* Adrian Marquez Nunez
+* A01707721
+* 18/09/2024
+*/
+//Bibliotecas
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -6,6 +13,7 @@
 
 using namespace std;
 
+//Manu
 void menu(){
     cout << "What do you wanna consult" << endl;
     cout << "1. Food eaten through the day" << endl;
@@ -16,13 +24,17 @@ void menu(){
 
 
 int main(){
+    //Variables
     bool cond=true;
     int a=0,sel=0,t=0;
     string n,fn;
     float w=0,cg=0,s=0;
+    //Bienvenida
     cout << "Welcome to the calory tracker" << endl;
     cout << "Firts let's create your user" << endl;
+    //Creacion de la app
     CaloryApp Test;
+    //Registro de info del usuario
     cout << "Name: " << endl;
     cin.ignore();
     getline(cin,n);
@@ -32,8 +44,10 @@ int main(){
     cin >> w;
     cout << "Calory goal: ";
     cin >> cg;
+    //Asignacion del usuario a la app
     User U(n, a, w, cg);
     Test.assign_User(U);
+    //Asigancion de alimentos al arreglo
     Test.add_Food("banana",1,100);
     Test.add_Food("orange",1,50);
     Test.add_Food("bread",1,25);
@@ -44,16 +58,19 @@ int main(){
         menu();
         cout << "Select: " << endl;
         cin >> sel;
+        //Opcion para consultar la info de los alimentos
         if(sel==1){
             cout << endl;
             Test.info();
             cout << endl;
         }
+        //Opcion para consultar el estatus de tu meta de calorias
         if(sel==2){
             cout << endl;
             Test.status();
             cout << endl;
         }
+        //Opcion para registrar mas alimentos consumidos
         if(sel==3){
             cout << "Name of the food: " << endl;
             cin.ignore();
@@ -67,10 +84,12 @@ int main(){
             Test.merge_sort();
             cout << endl;
         }
+        //Opcion para salir
         if(sel==4){
             cond=false;
             cout << endl;
         }
+        //Validacion en caso de numero no aceptado
         if(sel>4 || sel<0){
             cout << "Invalid option" << endl;
             cout << endl;
