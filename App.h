@@ -1,6 +1,12 @@
+/* 
+* Proyecto App Calorias
+* Adrian Marquez Nunez
+* A01707721
+* 18/09/2024
+*/
 #ifndef App_H
 #define App_H
-
+//Bibliotecas
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -8,22 +14,36 @@
 
 using namespace std;
 
+//Clase de la app que maneja los alimentos consumidos y datos del usuario
 class CaloryApp{
     private:
+	//Atributos
     User Client;
+	//Arreglo de alimentos consumidos 
     Food Food_Consumed[100];
+	//arreglo auxiliar
     Food Copy[100];
     int food_num;
+	//Funciones auxiliares para ordenar
     void copyArray(int, int);
 	void mergeSplit(int, int);
     void mergeArray(int, int, int);
     public:
+	//Constructor default
     CaloryApp():food_num(0){};
+	//Metodo para ordenar alimentos de menor a mayor dependiendo de las calorias
+	//Complejidad de tiempo O(nlog(n))
+	//Complejidad espacial O(n)
     void merge_sort();
+	//Metodo para asignar el usuario
     void assign_User(User&);
+	//Metodo para agregar alimentos al arreglo
     void add_Food(string, int, float);
+	//Sumatoria de las calorias
 	float total_calories();
+	//Diferencia entre calorias totales y meta de calorias
 	void status();
+	//Info de los alimentos
 	void info(){
 		for(int i=0; i < food_num; i++){
         Food_Consumed[i].display();
