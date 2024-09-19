@@ -1,20 +1,32 @@
+/* 
+* Proyecto App Calorias
+* Adrian Marquez Nunez
+* A01707721
+* 18/09/2024
+*/
 #ifndef User_H
 #define User_H
+//Bibliotecas
 #include <iostream>
 #include <vector>
 #include <sstream>
 
 using namespace std;
 
+//Clase usuario con datos genericos
 class User{
     private:
+    //Atributos
     string name;
     int age;
     float weigth;
     float calory_goal;
     public:
+    //Constructor default
     User():name(""), age(0), weigth(0), calory_goal(0){};
+    //Constructor 
     User(string n,int a,float w,float cg): name(n), age(a), weigth(w), calory_goal(cg){};
+    //Getters y Setters
     string get_name(){
         return name;
     }
@@ -41,18 +53,24 @@ class User{
     }
 };
 
+//Clase con informacion de los alimentos
 class Food{
+    //Atributos
     private:
     string name;
     int type;
     float size;
     float calories;
     public:
+    //Constructor default
     Food():name(""),type(0),size(0),calories(0){};
+    //Constructor
     Food(string n,int t,float s):name(n),type(t),size(s),calories(0){};
+    //Getters
     string get_type();
     float get_size();
     float get_calories();
+    //Metodo que muestra toda la info del alimento
     void display();
 };
 
