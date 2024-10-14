@@ -11,6 +11,7 @@
 #include <vector>
 #include <sstream>
 #include "User.h"
+#include "Bst.h"
 
 using namespace std;
 
@@ -18,19 +19,22 @@ using namespace std;
 class CaloryApp{
     private:
 	//Atributos
+	string name;
     User Client;
 	//Arreglo de alimentos consumidos 
-    Food Food_Consumed[100];
+    vector<Food> Food_Consumed;
 	//arreglo auxiliar
-    Food Copy[100];
-    int food_num;
+    vector<Food> Copy;
+	//BST
+	BST<Food> Tree;
 	//Funciones auxiliares para ordenar
     void copyArray(int, int);
 	void mergeSplit(int, int);
     void mergeArray(int, int, int);
     public:
 	//Constructor default
-    CaloryApp():food_num(0){};
+	CaloryApp():name(""){};
+    CaloryApp(string n):name(n){};
 	//Metodo para ordenar alimentos de menor a mayor dependiendo de las calorias
 	//Complejidad de tiempo O(nlog(n))
 	//Complejidad espacial O(n)
@@ -43,18 +47,24 @@ class CaloryApp{
 	float total_calories();
 	//Diferencia entre calorias totales y meta de calorias
 	void status();
+	//Encuentra un alimento en el arbol en base a sus calorias
+	void find(float);
 	//Info de los alimentos
 	void info(){
-		for(int i=0; i < food_num; i++){
+		for(int i=0; i < Food_Consumed.size(); i++){
         Food_Consumed[i].display();
     	}
+	}
+	//Funcion para verificar que el arbol mantenga su forma
+	void check(){
+		cout << Tree.visit() << endl;
 	}
 
 
 };
 
 void CaloryApp::merge_sort(){
-	mergeSplit(0,food_num-1);
+	mergeSplit(0,Food_Consumed.size()-1);
 
 }
 
@@ -112,13 +122,15 @@ void CaloryApp::assign_User(User &u){
 }
 
 void CaloryApp::add_Food(string n, int t, float s){
-    Food_Consumed[food_num]=Food(n,t,s);
-    food_num++;
+	Food F(n,t,s);
+    Food_Consumed.push_back(F);
+	Copy.push_back(F);
+	Tree.add(F);
 }
 
 float CaloryApp::total_calories(){
 	float total=0.0;
-	for(int i=0; i < food_num; i++){
+	for(int i=0; i < Food_Consumed.size(); i++){
 		total=total+Food_Consumed[i].get_calories();
 	}
 	return total;
@@ -140,6 +152,10 @@ void CaloryApp::status(){
 		cout << "Good Job, you achieved your calory goal" << endl;
 		cout << endl;
 	}
+}
+
+void CaloryApp::find(float cal){
+	Tree.find(cal);
 }
 
 #endif
