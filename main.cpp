@@ -13,8 +13,9 @@
 
 using namespace std;
 
-//Manu
+//Menu
 void menu(){
+    cout << endl;
     cout << "What do you wanna consult" << endl;
     cout << "1. Food eaten through the day" << endl;
     cout << "2. Status of you calory goal" << endl;
@@ -23,15 +24,26 @@ void menu(){
     cout << "5. Exit" << endl;
 }
 
+//Menu secundario
+void menu_1(){
+    cout << endl;
+    cout << "In what order do you wanna consult" << endl;
+    cout << "1. Alphabetically" << endl;
+    cout << "2. By calories" << endl;
+    cout << endl;
+}
+
 
 int main(){
     //Variables
     bool cond=true;
-    int a=0,sel=0,t=0;
+    int a=0,sel=0,sel_1=0,t=0;
     string n,fn;
     float w=0,cg=0,s=0, find_calories=0;
     //Bienvenida
+    cout << endl;
     cout << "Welcome to the calory tracker" << endl;
+    cout << endl;
     cout << "Firts let's create your user" << endl;
     //Creacion de la app
     CaloryApp Test("Tracker app");
@@ -59,21 +71,32 @@ int main(){
         menu();
         cout << "Select: " << endl;
         cin >> sel;
-        //Opcion para consultar la info de los alimentos
+        //Opcion para consultar la info de los alimentos en orden alfabetico o menor a mayor
         if(sel==1){
+            menu_1();
+            cout << "Select: " << endl;
+            cin >> sel_1;
             cout << endl;
-            Test.info();
+            if(sel_1==1){
+                Test.order_alpha();
+            }
+            else if(sel_1==2){
+                Test.order_cal();
+            }
             cout << endl;
+            sel=0;
+            sel_1=0;
         }
         //Opcion para consultar el estatus de tu meta de calorias
         if(sel==2){
             cout << endl;
             Test.status();
             cout << endl;
+            sel=0;
         }
         //Opcion para registrar mas alimentos consumidos
         if(sel==3){
-            cout << "Name of the food: " << endl;
+            cout << "Name of the food (in lowercase letters): " << endl;
             cin.ignore();
             getline(cin,fn);
             cout << "Type of food" << endl;
@@ -84,13 +107,15 @@ int main(){
             Test.add_Food(fn,t,s);
             Test.merge_sort();
             cout << endl;
+            sel=0;
         }
-        //Opcion para salir
+        //Opcion para buscar un alimento en el BST
         if(sel==4){
             cout << "Amount of calories to find a certain food:" << endl;
             cin >> find_calories;
             cout << endl;
-            Test.find(find_calories);  
+            Test.find(find_calories); 
+            sel=0; 
         }
         //Opcion para salir
         if(sel==5){
