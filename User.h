@@ -67,12 +67,17 @@ class Food{
     //Constructor
     Food(string n,int t,float s):name(n),type(t),size(s),calories(0){};
     //Getters
+    char get_char();
     string get_type();
     float get_size();
     float get_calories();
     //Metodo que muestra toda la info del alimento
-    void display();
+    string display();
 };
+
+char Food::get_char(){
+    return name[0];
+}
 
 string Food::get_type(){
     string t;
@@ -105,11 +110,13 @@ float Food::get_calories(){
     
 }
 
-void Food::display(){
-    cout << name << endl;
-    cout << size << " grams" << endl;
-    cout << get_calories() << " calories" << endl;
-    cout << endl;
+string Food::display(){
+    stringstream aux;
+    aux << name << "\n";
+    aux << size << " grams" << "\n";
+    aux << get_calories() << " calories" << "\n";
+    aux << "\n";
+    return aux.str();
 }
 
 #endif
