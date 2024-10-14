@@ -19,7 +19,8 @@ void menu(){
     cout << "1. Food eaten through the day" << endl;
     cout << "2. Status of you calory goal" << endl;
     cout << "3. Add food to the list" << endl;
-    cout << "4. Exit" << endl;
+    cout << "4. Find a food based on the amount of calories" << endl;
+    cout << "5. Exit" << endl;
 }
 
 
@@ -28,12 +29,12 @@ int main(){
     bool cond=true;
     int a=0,sel=0,t=0;
     string n,fn;
-    float w=0,cg=0,s=0;
+    float w=0,cg=0,s=0, find_calories=0;
     //Bienvenida
     cout << "Welcome to the calory tracker" << endl;
     cout << "Firts let's create your user" << endl;
     //Creacion de la app
-    CaloryApp Test;
+    CaloryApp Test("Tracker app");
     //Registro de info del usuario
     cout << "Name: " << endl;
     cin.ignore();
@@ -86,11 +87,19 @@ int main(){
         }
         //Opcion para salir
         if(sel==4){
+            cout << "Amount of calories to find a certain food:" << endl;
+            cin >> find_calories;
+            cout << endl;
+            Test.find(find_calories);  
+        }
+        //Opcion para salir
+        if(sel==5){
+            cout << "\n Thanks for using the app" << endl;
             cond=false;
             cout << endl;
         }
         //Validacion en caso de numero no aceptado
-        if(sel>4 || sel<0){
+        if(sel>5 || sel<0){
             cout << "Invalid option" << endl;
             cout << endl;
         }
