@@ -49,14 +49,14 @@ class CaloryApp{
 	void status();
 	//Encuentra un alimento en el arbol en base a sus calorias
 	void find(float);
-	//Info de los alimentos
-	void info(){
+	//Info de los alimentos en orden alfabetico
+	void order_alpha(){
 		for(int i=0; i < Food_Consumed.size(); i++){
-        Food_Consumed[i].display();
+        cout << Food_Consumed[i].display();
     	}
 	}
-	//Funcion para verificar que el arbol mantenga su forma
-	void check(){
+	//Info de los alimentos en orden menor a mayor
+	void order_cal(){
 		cout << Tree.visit() << endl;
 	}
 
@@ -79,8 +79,12 @@ void CaloryApp::mergeArray(int low, int mid, int high) {
 	i=low;
 	j=mid+1;
 	k=low;
+	char c_i,c_j,c_k;
 	while(i<=mid && j<=high){
-		if(Food_Consumed[i].get_calories() > Food_Consumed[j].get_calories()){
+		c_i=Food_Consumed[i].get_char();
+		c_j=Food_Consumed[j].get_char();
+		c_k=Food_Consumed[k].get_char(); 
+		if(c_i > c_j){
 			Copy[k]=Food_Consumed[j];
 			j++;
 		}
