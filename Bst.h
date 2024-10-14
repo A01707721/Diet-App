@@ -63,7 +63,7 @@ void TreeNode<T>::inorder(std::stringstream& aux) {
         left ->inorder(aux);
         aux << " ";
     }
-    aux << value.get_calories();
+    aux << value.display();
 
     if (right != 0){
         aux << " ";
@@ -127,7 +127,7 @@ void TreeNode<T>::removeChilds(){
 template <class T>
 void TreeNode<T>::fi(float val){
     if(val == value.get_calories()){
-        value.display();
+        std::cout << value.display();
     }
     else{
         if(value.get_calories() > val){
@@ -195,9 +195,9 @@ void BST<T>::add(T val){
 template <class T>
 std::string BST<T>::visit(){
     std::stringstream aux;
-    aux << "[";
+    aux << "";
     root->inorder(aux);
-    aux << "]";
+    aux << "";
     return aux.str();
 }
 
