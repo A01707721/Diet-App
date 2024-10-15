@@ -19,8 +19,8 @@ además de registrar más de estos, buscar un alimento en base a su nuumero calo
 Programa hecho en C++ standard, con una interfaz del usuario en inglés
 - Compilar en terminal con g++ main.cpp App.h User.h
 - Windows a.exe
-- Linux ./a.out
-  Debiod a la implementacion de el BTS no es posible agregar 2 comidas con el mismo valor calorico
+- Linux ./a.out <br>
+   <br> Debido a la implementacion de un BTS no es posible agregar 2 comidas con el mismo valor calorico.
 ## SICT0302 Toma decisiones 
 ### Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
 En este programa se utilizo el algoritmo MergeSort implementado sobre un vector para ordenar los alimentos consumidos
