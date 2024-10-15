@@ -33,22 +33,24 @@ Utilice esta estructura para reducir el tiempo de busqueda a logaritmico en vez 
 poco probable que los alimentos consumidos a traves de dia esten ordenados de menor a mayor o alguna configuracion similar, el arbol no deberia deformarse.
 ## SICT0301 Evalúa los componentes
 ### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
-Merge Sort \n
-Time Complexity O(nLog(n)) \n
-Space Complexity O(n) Tiene esta complejidad ya que es necesario un arreglo auxiliar del que copiar \n
+Merge Sort <br>
+Time Complexity O(nLog(n)) <br>
+Space Complexity O(n) Tiene esta complejidad ya que es necesario un arreglo auxiliar del que copiar <br>
 ### Hace un análisis de complejidad correcto y completo todas las estructuras de datos y cada uno de sus usos en el programa.
-BST \n
-Insertion O(log(n)) \n
-Access O(log(n)) \n
-Search O(log(n)) \n
+BST <br>
+Insertion O(log(n)) <br>
+Access O(log(n)) <br>
+Search O(log(n)) <br>
+<br>
 Aunque el peor de los casos es tecnicamente O(n) como se menciono anteriormente debido a la 
 aletoriedad de los valores de comida, el arbol no deberia deformarse y por lo tanto mantener una complejidad logaritmica
 para añadir, buscar o consultar un nodo. 
 
-Vector \n
-Insertion O(n) ya que es necesario recorrer el vector para añadir el valor al final de este. \n 
-Access O(1) ya que puedo acceder al vector directamente con su indice. \n
-Search O(n) de igual forma en el peor de los casos seria necesario recorrer todo el vector. \n
+Vector <br>
+Insertion O(n) ya que es necesario recorrer el vector para añadir el valor al final de este. <br> 
+Access O(1) ya que puedo acceder al vector directamente con su indice. <br>
+Search O(n) de igual forma en el peor de los casos seria necesario recorrer todo el vector. <br>
+<br>
 Debido a la alta complejidad temporal es por ello que unicamnte utilizo el vector para ordenar de forma alfabetica, 
 y el resto de operaciones es hecho mediante el BST.
 ## SICT0303 Implementa acciones científicas
