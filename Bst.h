@@ -10,6 +10,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include "User.h"
 
 
@@ -38,6 +39,9 @@ class TreeNode{
     void removeChilds();
     //Metodo para encontrar un nodo
     void fi(float);
+    //Funcion auxiliar para borrar
+    TreeNode<T>* predecesor();
+    void remove(float);
 
     friend class BST<T>;
 };
@@ -139,6 +143,71 @@ void TreeNode<T>::fi(float val){
     }
 }
 
+template <class T>
+TreeNode<T>* TreeNode<T>::predecesor(){
+    TreeNode<T> *l,*r;
+    l=left;
+    r=right;
+    if(left==0){
+        if(right!=0){
+            right=0;
+        }
+        return r;
+    }
+    if(left->right==0){
+       left=left->left;
+       l->left=0;
+       return l;
+    }
+    TreeNode<T> *parent, *child;
+    parent=left;
+    child=left->right;
+    while(child->right!=0){
+        parent=child;
+        child=child->right;
+    }
+    parent->right=child->left;
+    child->left=0;
+    return child;
+}
+
+template <class T>
+void TreeNode<T>::remove(float val){
+	TreeNode<T> * succ, *old;
+
+	if (val < value.get_calories()) {
+		if (left != 0) {
+			if (left->value.get_calories() == val) {
+				old = left;
+				succ = left->predecesor();
+				if (succ != 0) {
+					succ->left = old->left;
+					succ->right = old->right;
+				}
+				left = succ;
+				delete old;
+			} else {
+				left->remove(val);
+			}
+		}
+	} else if (val > value.get_calories()) {
+		if (right != 0) {
+			if (right->value.get_calories() == val) {
+				old = right;
+				succ = right->predecesor();
+				if (succ != 0) {
+					succ->left = old->left;
+					succ->right = old->right;
+				}
+				right = succ;
+				delete old;
+			} else {
+				right->remove(val);
+			}
+		}
+	}
+}
+
 //Clase BST
 template <class T>
 class BST{
@@ -162,6 +231,7 @@ class BST{
     std::string visit();
     //Metodo para encontrar un valor en el arbol
     void find(float);
+    string delete_node(float);
 
 };
 
@@ -207,8 +277,29 @@ void BST<T>::find(float val){
     if(root != 0){
         root->fi(val);
     }
+
 }
 
+template <class T>
+string BST<T>::delete_node(float cal){
+    string aux;
+    if(root!=0){
+        if(cal==root->value.get_calories()){
+            TreeNode<T> *succesor = root->predecesor();
+            if(succesor!=0){
+                succesor->left=root->left;
+                succesor->right=root->right;
+            }
+            aux=root->value.get_name();
+            delete root;
+            root=succesor;
+        }
+        else{
+            root->remove(cal);
+        }
+        return aux;
+    }
+}
 
 
 #endif
