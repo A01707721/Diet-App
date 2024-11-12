@@ -8,8 +8,10 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <fstream>
 #include "User.h"
 #include "App.h"
+#include "Textprocessor.h"
 
 using namespace std;
 
@@ -21,7 +23,8 @@ void menu(){
     cout << "2. Status of you calory goal" << endl;
     cout << "3. Add food to the list" << endl;
     cout << "4. Find a food based on the amount of calories" << endl;
-    cout << "5. Exit" << endl;
+    cout << "5. Save changes on the file" << endl;
+    cout << "6. Exit" << endl;
 }
 
 //Menu secundario
@@ -34,11 +37,12 @@ void menu_1(){
 }
 
 
+
 int main(){
     //Variables
     bool cond=true;
-    int a=0,sel=0,sel_1=0,t=0;
-    string n,fn;
+    int a=0,sel=0,sel_1=0;
+    string n,t,fn;
     float w=0,cg=0,s=0, find_calories=0;
     //Bienvenida
     cout << endl;
@@ -61,11 +65,7 @@ int main(){
     User U(n, a, w, cg);
     Test.assign_User(U);
     //Asigancion de alimentos al arreglo
-    Test.add_Food("banana",1,100);
-    Test.add_Food("orange",1,50);
-    Test.add_Food("bread",1,25);
-    Test.add_Food("muffin",1,250);
-    Test.add_Food("pasta",1,75);
+    Test.initialize();
     Test.merge_sort();
     while(cond==true){
         menu();
@@ -100,7 +100,7 @@ int main(){
             cin.ignore();
             getline(cin,fn);
             cout << "Type of food" << endl;
-            cout << "(1. Carbohydrate, 2. Protein, 3. Lipids): ";
+            cout << "(Carbohydrate, Protein, Lipids): ";
             cin >> t;
             cout << "Size in grams: ";
             cin >> s;
@@ -117,14 +117,20 @@ int main(){
             Test.find(find_calories); 
             sel=0; 
         }
-        //Opcion para salir
+        //Opcion para guardar los cambio en el archivo
         if(sel==5){
+            Test.rewrite();
+            cout << "The file has been updated :)" << endl;
+        }
+        //Opcion para salir
+        if(sel==6){
             cout << "\n Thanks for using the app" << endl;
             cond=false;
             cout << endl;
+            
         }
         //Validacion en caso de numero no aceptado
-        if(sel>5 || sel<0){
+        if(sel>6 || sel<0){
             cout << "Invalid option" << endl;
             cout << endl;
         }
