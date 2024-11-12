@@ -34,26 +34,47 @@ poco probable que los alimentos consumidos a traves de dia esten ordenados de me
 ## SICT0301 Evalúa los componentes
 ### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
 Merge Sort <br>
-Time Complexity O(nLog(n)) <br>
-Space Complexity O(n) Tiene esta complejidad ya que es necesario un arreglo auxiliar del que copiar <br>
+- Time Complexity O(nLog(n)) <br>
+- Space Complexity O(n) <br>
+<br>
+Tiene esta complejidad ya que es necesario un arreglo auxiliar del que copiar. <br>
+
 ### Hace un análisis de complejidad correcto y completo todas las estructuras de datos y cada uno de sus usos en el programa.
 BST <br>
-Insertion O(log(n)) <br>
-Access O(log(n)) <br>
-Search O(log(n)) <br>
+- Insertion O(log(n)) <br>
+- Access O(log(n)) <br>
+- Search O(log(n)) <br>
 <br>
 Aunque el peor de los casos es tecnicamente O(n) como se menciono anteriormente debido a la 
 aletoriedad de los valores de comida, el arbol no deberia deformarse y por lo tanto mantener una complejidad logaritmica
 para añadir, buscar o consultar un nodo. 
 
 Vector <br>
-Insertion O(n) ya que es necesario recorrer el vector para añadir el valor al final de este. <br> 
-Access O(1) ya que puedo acceder al vector directamente con su indice. <br>
-Search O(n) de igual forma en el peor de los casos seria necesario recorrer todo el vector. <br>
+- Insertion O(n) ya que es necesario recorrer el vector para añadir el valor al final de este. <br> 
+- Access O(1) ya que puedo acceder al vector directamente con su indice. <br>
+- Search O(n) de igual forma en el peor de los casos seria necesario recorrer todo el vector. <br>
 <br>
 Debido a la alta complejidad temporal es por ello que unicamnte utilizo el vector para ordenar de forma alfabetica, 
 y el resto de operaciones es hecho mediante el BST.
+
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+Analizando las opciones que presneta el programa:<br>
+1. Food eaten through the day: O(n) ya que es necesario recorrer toda la estructura para imprimir cada elemento de esta.<br>
+2. Status of you calory goal: O(n) ya que de igual forma es necesario recorrer todo para la sumatoria de calorias.<br>
+3. Add food to the list:<br>
+- O(n) para agregar al vector
+- O(log(n)) para agregar al bst  
+4. Find a food based on the amount of calories: O(log(n)) ya que se usa el bst para buscar un elemento en la estructura.<br>
+5. Save changes on the file: O(n) para recorrer cada elemento de la esttructura para que este sea copiado al archivo.<br>
+#### Complejidad final del programa O(4n + 2log(n))<br>
+
 ## SICT0303 Implementa acciones científicas
 ### Implementa mecanismos para consultar información de las estructras correctos
 Mediante las opciones del menu es posible agregar nuevos objetos a las estructuras, ademas de poder consultarlas en base a los
-diferentes valores de sus atributos.
+diferentes valores de sus atributos.<br>
+### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta 
+La función initialize (App.h lineas 193-199 y Textprocessor.h) permite llenar las estructuras con los datos pre-escritos en el archivo
+de texto.<br>
+### Implementa mecanismos de escritura de archivos para guardar los datos  de las estructuras de manera correcta
+El menú le da la opción de guardar los objetos agregados a las estructuras en el archvio de texto, para que cuando este sea ejecutado estos se encuentren 
+en los datos pre-escritos. Simulando una especie de base de datos rudimentaria.
