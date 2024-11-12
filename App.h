@@ -12,6 +12,7 @@
 #include <sstream>
 #include "User.h"
 #include "Bst.h"
+#include "Textprocessor.h"
 
 using namespace std;
 
@@ -27,14 +28,18 @@ class CaloryApp{
     vector<Food> Copy;
 	//BST
 	BST<Food> Tree;
+	//Objeto auxiliar para el texto
+	Textprocessor Text;
+	//Numero para conteo de lineas
+	int num_text;
 	//Funciones auxiliares para ordenar
     void copyArray(int, int);
 	void mergeSplit(int, int);
     void mergeArray(int, int, int);
     public:
 	//Constructor default
-	CaloryApp():name(""){};
-    CaloryApp(string n):name(n){};
+	CaloryApp():name(""),num_text(1){};
+    CaloryApp(string n):name(n),num_text(1){};
 	//Metodo para ordenar alimentos de menor a mayor dependiendo de las calorias
 	//Complejidad de tiempo O(nlog(n))
 	//Complejidad espacial O(n)
@@ -42,13 +47,19 @@ class CaloryApp{
 	//Metodo para asignar el usuario
     void assign_User(User&);
 	//Metodo para agregar alimentos al arreglo
-    void add_Food(string, int, float);
+    void add_Food(string, string, float);
 	//Sumatoria de las calorias
 	float total_calories();
 	//Diferencia entre calorias totales y meta de calorias
 	void status();
 	//Encuentra un alimento en el arbol en base a sus calorias
 	void find(float);
+	//Lectura de archivos
+	void read();
+	//Copiar el archivo a la estructura
+	void initialize();
+	//Modificar el archivo
+	void rewrite();
 	//Info de los alimentos en orden alfabetico
 	void order_alpha(){
 		for(int i=0; i < Food_Consumed.size(); i++){
@@ -125,7 +136,7 @@ void CaloryApp::assign_User(User &u){
     Client=u;
 }
 
-void CaloryApp::add_Food(string n, int t, float s){
+void CaloryApp::add_Food(string n, string t, float s){
 	Food F(n,t,s);
     Food_Consumed.push_back(F);
 	Copy.push_back(F);
@@ -161,5 +172,43 @@ void CaloryApp::status(){
 void CaloryApp::find(float cal){
 	Tree.find(cal);
 }
+
+void CaloryApp::read(){
+	int aux=num_text;
+	string n,t,aux_text;
+	float s;
+	aux_text=Text.go_line(aux);
+	n=Text.text_to_text(aux_text);
+	aux++;
+	aux_text=Text.go_line(aux);
+	t=Text.text_to_text(aux_text);
+	aux++;
+	aux_text=Text.go_line(aux);
+	s=Text.text_to_float(aux_text);
+	aux++;
+	num_text=num_text+4;
+	add_Food(n,t,s);
+}
+
+void CaloryApp::initialize(){
+	int aux=(Text.count_lines()/4);
+	while(aux>0){
+		read();
+		aux--;
+	}
+}
+
+
+void CaloryApp::rewrite(){
+	ofstream file("Food.txt");
+	for(int i=0; i < Food_Consumed.size(); i++){
+		file << Food_Consumed[i].get_name() << "\n";
+		file << Food_Consumed[i].get_type() << "\n";
+        file << Food_Consumed[i].get_size() << "\n";
+		file << "\n";
+    }
+	file.close();
+}
+
 
 #endif
