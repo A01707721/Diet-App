@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -58,15 +59,16 @@ class Food{
     //Atributos
     private:
     string name;
-    int type;
+    string type;
     float size;
     float calories;
     public:
     //Constructor default
-    Food():name(""),type(0),size(0),calories(0){};
+    Food():name(""),type(""),size(0),calories(0){};
     //Constructor
-    Food(string n,int t,float s):name(n),type(t),size(s),calories(0){};
+    Food(string n,string t,float s):name(n),type(t),size(s),calories(0){};
     //Getters
+    string get_name();
     char get_char();
     string get_type();
     float get_size();
@@ -75,22 +77,16 @@ class Food{
     string display();
 };
 
+string Food::get_name(){
+    return name;
+}
+
 char Food::get_char(){
     return name[0];
 }
 
 string Food::get_type(){
-    string t;
-        if(type==1){
-            t="Carbohydrate";
-        }
-        if(type==2){
-            t="Protein";
-        }
-        if(type==3){
-            t="Lipids";
-        }
-        return t;
+    return type;
 }
 
 float Food::get_size(){
@@ -99,10 +95,10 @@ float Food::get_size(){
 
 float Food::get_calories(){
     float cal=0;
-    if(type==1 || type==2){
+    if(type=="Carbohydrate" || type=="Protein"){
         cal=size*4;
         }
-    if(type==3){
+    if(type=="Lipids"){
         cal=size*9;
         }
     calories=cal;
