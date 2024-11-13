@@ -1,0 +1,11 @@
+apple
+Carbohydrate
+65
+
+banana
+Carbohydrate
+60
+
+steak
+Protein
+125
