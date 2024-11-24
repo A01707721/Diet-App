@@ -11,7 +11,8 @@ What do you wanna consult
 2. Status of you calory goal
 3. Add food to the list
 4. Find a food based on the amount of calories
-5. Exit
+5. Save changes on the file
+6. Exit
    
 A partir de este menú el usuario puede consultar datos de los diferentes alimentos,
 además de registrar más de estos, buscar un alimento en base a su nuumero calorico y salir del programa.
@@ -78,3 +79,12 @@ de texto.<br>
 ### Implementa mecanismos de escritura de archivos para guardar los datos  de las estructuras de manera correcta
 El menú le da la opción de guardar los objetos agregados a las estructuras en el archvio de texto, para que cuando este sea ejecutado estos se encuentren 
 en los datos pre-escritos. Simulando una especie de base de datos rudimentaria.
+
+## Correcciones
+**Version 1.0:**
+**SICT0303 Implementa acciones científicas** Se crea los archivos main.cpp App.h User.h para generar la app para el segumiento de calorias, se agrega un menu **(main.cpp lineas 19-28)** para interactuar con el usuario, se pueden agregar y conusltar objetos. **SICT0302 Toma decisiones** Ademas de implementarse un metodo merge sort para ordenar los alimentos **(App.h lineas 88-156)** <br> 
+**Version 2.0:**
+**SICT0302 Toma decisiones y SICT0301 Evalúa los componentes**Se implementa un arbol bianrio **BST.h** para tener una forma mas eficiente de buscar objetos con menor complejidad de tiempo, se agrega documentacion extra en el ReadMe sobre el porque se utilizo el algoritmo merge sort y sobre las estructuras usadas. <br>
+**Version 3.0:**
+**SICT0303 Implementa acciones científicas** Se implemento un archivo de texto **Food.txt**, que emula una especie de base de datos para los objetos modificados o agregados.
+**SICT0301 Evalúa los componentes** Se agrega documentacion adicional sobre la complejidad espacial y temporal del programa.
