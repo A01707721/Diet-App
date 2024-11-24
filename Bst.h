@@ -46,6 +46,10 @@ class TreeNode{
     friend class BST<T>;
 };
 
+/**Constructor default 
+*@param
+*@return objeto TreeNode
+*/
 template <class T>
 TreeNode<T>::TreeNode(T val){
     value=val;
@@ -53,6 +57,10 @@ TreeNode<T>::TreeNode(T val){
     right=0;
 }
 
+/**Constructor default 
+*@param T: valor del nodo, TreeNode ptr: apuntador a la izquierda y derecha
+*@return objeto TreeNode
+*/
 template <class T>
 TreeNode<T>::TreeNode(T val, TreeNode<T>* l, TreeNode<T>* r ){
     value=val;
@@ -61,6 +69,10 @@ TreeNode<T>::TreeNode(T val, TreeNode<T>* l, TreeNode<T>* r ){
 }
 
 
+/**Funcion para imprimir de menor a mayor
+*@param stringstream:cadena de texto
+*@return
+*/
 template <class T>
 void TreeNode<T>::inorder(std::stringstream& aux) {
     if (left != 0){
@@ -75,6 +87,10 @@ void TreeNode<T>::inorder(std::stringstream& aux) {
     }
 }
 
+/**Funcion para agregar un nodo
+*@param T:valor del nodo
+*@return
+*/
 template <class T>
 void TreeNode<T>::add(T val){
     if(val.get_calories() < value.get_calories()){
@@ -95,6 +111,10 @@ void TreeNode<T>::add(T val){
     }
 }
 
+/**Funcion para ver la altura del arbol
+*@param 
+*@return int:altura del arbol
+*/
 template <class T>
 int TreeNode<T>::height(){
     int height_r=0;
@@ -114,6 +134,10 @@ int TreeNode<T>::height(){
 
 }
 
+/**Funcion para eliminar los hijos del nodo
+*@param
+*@return
+*/
 template <class T>
 void TreeNode<T>::removeChilds(){
     if (left != 0) {
@@ -128,6 +152,10 @@ void TreeNode<T>::removeChilds(){
     }
 }
 
+/**Funcion para encontrar un nodo
+*@param T:valor del nodo
+*@return
+*/
 template <class T>
 void TreeNode<T>::fi(float val){
     if(val == value.get_calories()){
@@ -143,6 +171,10 @@ void TreeNode<T>::fi(float val){
     }
 }
 
+/**Funcion para enocntrar el predecesor del nodo
+*@param
+*@return TreeNode ptr: predecesor
+*/
 template <class T>
 TreeNode<T>* TreeNode<T>::predecesor(){
     TreeNode<T> *l,*r;
@@ -171,6 +203,10 @@ TreeNode<T>* TreeNode<T>::predecesor(){
     return child;
 }
 
+/**Funcion para remover el nodo
+*@param T:valor del nodo
+*@return
+*/
 template <class T>
 void TreeNode<T>::remove(float val){
 	TreeNode<T> * succ, *old;
@@ -235,10 +271,13 @@ class BST{
 
 };
 
+
 template <class T>
 int BST<T>::height(){
     return root->height();
 }
+
+
 
 template <class T>
 void BST<T>::remove(){
