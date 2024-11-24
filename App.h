@@ -37,8 +37,15 @@ class CaloryApp{
 	void mergeSplit(int, int);
     void mergeArray(int, int, int);
     public:
-	//Constructor default
+	/**Constructor default 
+    *@param
+    *@return objeto App
+    */
 	CaloryApp():name(""),num_text(1){};
+	/**Constructor donde se reciben las variables para los diferentes atributos
+    *@param string n: el nombre de la app
+    *@return objeto App
+    */
     CaloryApp(string n):name(n),num_text(1){};
 	//Metodo para ordenar alimentos de menor a mayor dependiendo de las calorias
 	//Complejidad de tiempo O(nlog(n))
@@ -74,17 +81,29 @@ class CaloryApp{
 
 };
 
+/**Funcion para ordenar
+*@param 
+*@return
+*/
 void CaloryApp::merge_sort(){
 	mergeSplit(0,Food_Consumed.size()-1);
 
 }
 
+/**Funcion para ordenar
+*@param int:indices del vector
+*@return
+*/
 void CaloryApp::copyArray(int low, int high) {
 	for(int i=low; i <= high; i++){
 		Food_Consumed[i]=Copy[i];
 	}
 }
 
+/**Funcion para ordenar
+*@param int:indices del vector
+*@return
+*/
 void CaloryApp::mergeArray(int low, int mid, int high) {
 	int i,j,k;
 	i=low;
@@ -118,6 +137,10 @@ void CaloryApp::mergeArray(int low, int mid, int high) {
 	}
 }
 
+/**Funcion para ordenar
+*@param int:indices del vector
+*@return
+*/
 void CaloryApp::mergeSplit(int low, int high) {
 	int mid;
 	if(high-low < 1){
@@ -132,10 +155,18 @@ void CaloryApp::mergeSplit(int low, int high) {
 	}
 }
 
+/**Funcion para agregar un usuario
+*@param User:usuario
+*@return
+*/
 void CaloryApp::assign_User(User &u){
     Client=u;
 }
 
+/**Funcion para agregar comida al vector y BST
+*@param string:nombre del alimento, string:tipo de alimento, float:tamano
+*@return
+*/
 void CaloryApp::add_Food(string n, string t, float s){
 	Food F(n,t,s);
     Food_Consumed.push_back(F);
@@ -143,6 +174,10 @@ void CaloryApp::add_Food(string n, string t, float s){
 	Tree.add(F);
 }
 
+/**Funcion para obtener el total de calorias consumidas
+*@param 
+*@return float:total de calorias
+*/
 float CaloryApp::total_calories(){
 	float total=0.0;
 	for(int i=0; i < Food_Consumed.size(); i++){
@@ -151,6 +186,10 @@ float CaloryApp::total_calories(){
 	return total;
 }
 
+/**Funcion para mostrar el estatus con respecto a la meta de calorias
+*@param
+*@return
+*/
 void CaloryApp::status(){
 	float diff;
 	if(total_calories() > Client.get_cg()){
@@ -169,10 +208,18 @@ void CaloryApp::status(){
 	}
 }
 
+/**Funcion para buscar un objeto por calorias en el BST
+*@param float:calorias
+*@return
+*/
 void CaloryApp::find(float cal){
 	Tree.find(cal);
 }
 
+/**Funcion para leer texto del archivo y convertirlo en objetos en las estructuras
+*@param 
+*@return
+*/
 void CaloryApp::read(){
 	int aux=num_text;
 	string n,t,aux_text;
@@ -190,6 +237,10 @@ void CaloryApp::read(){
 	add_Food(n,t,s);
 }
 
+/**Funcion para inicializar los objetos default del archivo de texto
+*@param
+*@return
+*/
 void CaloryApp::initialize(){
 	int aux=(Text.count_lines()/4);
 	while(aux>0){
@@ -198,7 +249,10 @@ void CaloryApp::initialize(){
 	}
 }
 
-
+/**Funcion para sobrescribir los cambios hechos en los alimentos en el archivo
+*@param 
+*@return
+*/
 void CaloryApp::rewrite(){
 	ofstream file("Food.txt");
 	for(int i=0; i < Food_Consumed.size(); i++){
