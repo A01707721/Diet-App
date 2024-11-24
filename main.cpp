@@ -15,7 +15,7 @@
 
 using namespace std;
 
-//Menu
+//Menu inicial
 void menu(){
     cout << endl;
     cout << "What do you wanna consult" << endl;
@@ -27,7 +27,7 @@ void menu(){
     cout << "6. Exit" << endl;
 }
 
-//Menu secundario
+//Menu secundario en caso de elegir la opcion 1
 void menu_1(){
     cout << endl;
     cout << "In what order do you wanna consult" << endl;
@@ -39,9 +39,11 @@ void menu_1(){
 
 
 int main(){
-    //Variables
+    //Variables bool para continuar mostrando el menu
     bool cond=true;
+    //Variables int para seleccionar en los menus
     int a=0,sel=0,sel_1=0;
+    //Variables para los constrcutores de objetos
     string n,t,fn;
     float w=0,cg=0,s=0, find_calories=0;
     //Bienvenida
