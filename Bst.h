@@ -38,7 +38,7 @@ class TreeNode{
     //Metodo para eliminar a los hijos de un nodo
     void removeChilds();
     //Metodo para encontrar un nodo
-    void fi(float);
+    TreeNode<T>* fi(float);
     //Funcion auxiliar para borrar
     TreeNode<T>* predecesor();
     void remove(float);
@@ -154,19 +154,31 @@ void TreeNode<T>::removeChilds(){
 
 /**Funcion para encontrar un nodo
 *@param T:valor del nodo
-*@return
+*@return TreeNode ptr: nodo
 */
 template <class T>
-void TreeNode<T>::fi(float val){
+TreeNode<T>* TreeNode<T>::fi(float val){
     if(val == value.get_calories()){
-        std::cout << value.display();
+        return this;
     }
     else{
         if(value.get_calories() > val){
-            left->fi(val);
+            if(left!=0){
+                left->fi(val);
+            }
+            else{
+                return this;
+            }
+            
         }
         else if(value.get_calories() < val){
-            right->fi(val);
+            if(right!=0){
+                right->fi(val);
+            }
+            else{
+                return this;
+            }
+            
         }
     }
 }
@@ -314,7 +326,13 @@ std::string BST<T>::visit(){
 template <class T>
 void BST<T>::find(float val){
     if(root != 0){
-        root->fi(val);
+        TreeNode<T> *aux = root->fi(val);
+        if(aux->value.get_calories()==val){
+            std::cout << aux->value.display();
+        }
+        else{
+            std::cout << "Food not found" << std::endl;
+        }
     }
 
 }
