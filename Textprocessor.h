@@ -51,6 +51,7 @@ string Textprocessor::go_line(int num){
         }
         currentline++;
     }
+        return "Line out of bounds";
     
 }
 
