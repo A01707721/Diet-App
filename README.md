@@ -87,4 +87,6 @@ en los datos pre-escritos. Simulando una especie de base de datos rudimentaria.
 **SICT0302 Toma decisiones y SICT0301 Evalúa los componentes**Se implementa un arbol bianrio **BST.h** para tener una forma mas eficiente de buscar objetos con menor complejidad de tiempo, se agrega documentacion extra en el ReadMe sobre el porque se utilizo el algoritmo merge sort y sobre las estructuras usadas. <br>
 **Version 3.0:**
 **SICT0303 Implementa acciones científicas** Se implemento un archivo de texto **Food.txt**, que emula una especie de base de datos para los objetos modificados o agregados.
-**SICT0301 Evalúa los componentes** Se agrega documentacion adicional sobre la complejidad espacial y temporal del programa.
+**SICT0301 Evalúa los componentes** Se agrega documentacion adicional sobre la complejidad espacial y temporal del programa. <br>
+**Version 4.0:**
+**SICT0303 Implementa acciones científicas** Se arreglo un bug en caso de que no se encuentre un nodo en el BST que no cumpla con las condiciones dadas.
